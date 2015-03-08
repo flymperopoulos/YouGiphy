@@ -6,7 +6,7 @@ var WikiArticle = require(path.join(__dirname,'../models/postModel'));
 var routes = {};
 
 routes.home = function(req, res){
-	res.sendFile('./public/main.html')
+	res.sendfile('./public/main.html')
 };
 
 module.exports = routes;
