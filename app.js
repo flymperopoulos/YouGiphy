@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var auth = require('./authentication.js');
 var ensureAuthenticated = require('./routes/ensureAuthenticated.js');
-var Person = require(path.join(__dirname,'/models/personModel'));
+var Person = require(path.join(__dirname,'./models/personModel'));
 
 var index = require('./routes/index');
 

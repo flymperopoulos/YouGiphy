@@ -2,7 +2,7 @@ var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var config = require('./oauth.js');
 var path = require('path');
-var Person = require(path.join(__dirname,'./models/personModel'));
+var Human = require(path.join(__dirname,'./models/personModel'));
 
 // config
 module.exports = passport.use(new TwitterStrategy({
@@ -11,7 +11,7 @@ module.exports = passport.use(new TwitterStrategy({
 	callbackURL: config.twitter.callbackURL
 },
 function(accessToken, refreshToken, profile, done) {
-	Person.findOne({ oauthID: profile.id }, function(err, user) {
+	Human.findOne({ oauthID: profile.id }, function(err, user) {
 		if(err) { console.log(err); }
 		if (!err && user != null) {
 			done(null, user);
@@ -19,7 +19,7 @@ function(accessToken, refreshToken, profile, done) {
 
 			var displayWithUnder = profile.displayName.replace(/ /g,"_");
 
-			var user = new Person({
+			var user = new Human({
 				oauthID: profile.id,
 				name: profile.displayName,
 				created: Date.now(),

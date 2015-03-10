@@ -10,7 +10,7 @@ var personSchema = mongoose.Schema({
 });
 
 // Definition of the model in the models file
-var Person = mongoose.model('Person', personSchema);
+var Human = mongoose.model('Human', personSchema);
 
 // Export the model
-module.exports = Person;
+module.exports = Human;

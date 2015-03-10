@@ -11,7 +11,7 @@ app.config(function($routeProvider, $locationProvider){
     })
 
 	// route to creation of new wiki form
-	.when('/auth/twitter', {
+	.when('/account', {
 		templateUrl : '../htmlLayouts/signUpPage.html',
 		controller  : 'loginController'
 	})
@@ -27,4 +27,5 @@ app.controller('loginController', function($scope, $http, $location, $routeParam
 	$scope.logStatus = true;
 	console.log(logStatus);
 	$scope.f = "fasdf";
+
 });
