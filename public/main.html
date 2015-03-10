@@ -31,12 +31,13 @@
           <div class="navbar-header">
               <a href="/#/"><img class="navbar-brand" alt="Brand" src="images/giphyLogoTab.png"></a>
           </div>
+
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="/#/login">Login</a>
+            <li ng-hide="logStatus">
+              <a class="button" href="/auth/twitter" target="_self">Login</a>
             </li>
-            <li>
-              <a href="/#/{{randomArticleSelected.title}}" ng-click="signUp()">Sign Up</a>
+            <li ng-show="logStatus">
+              <a class="button" href="/logout">Logout</a>
             </li>
           </ul>
         </div>
