@@ -9,13 +9,19 @@ routes.home = function(req, res){
 	res.sendfile('./public/main.html')
 };
 
+// the response from this route will be passed
+// as an argument to a search route for Giphy
 routes.parseForHash = function(req, res){
-	var searchTerm = "ikjhf kdj #kfj ld";
+	// searchTerm will eventually be sent via req
+	var searchTerm = "i#kjhf kdj #kfj ld";
+	// creates an array of strings
 	var splitSpaces = searchTerm.split(' ');
-	console.log(splitSpaces);
+	// goes through elements of the array
 	for (i in splitSpaces){
 		var elt = splitSpaces[i];
-		if (elt.indexOf('#') !== -1){
+		// checks if elt is a tag
+		// '#' at any index other than 0 is not a tag
+		if (elt.indexOf('#') == 0){
 			console.log("good news");
 			res.send(elt);
 		}
