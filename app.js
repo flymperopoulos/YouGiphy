@@ -19,7 +19,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(multer({ dest: './uploads/'}))
 
-app.get("*", index.home);
+app.get("/", index.home);
+app.get("/parseForHash", index.parseForHash);
 
 mongoose.connect(mongoURI);
 
