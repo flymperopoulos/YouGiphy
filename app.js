@@ -54,17 +54,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // GET requests
-app.get('/account', ensureAuthenticated, index.account);
 app.get('/auth/twitter',
 	passport.authenticate('twitter'));
-
 app.get('/auth/twitter/callback',
-	passport.authenticate('twitter', { failureRedirect: '/', successRedirect:'/account' }));
-
-// app.post('postGiph', index.postGiph);
+	passport.authenticate('twitter', { failureRedirect: '/', successRedirect:'/' }));
+app.get('/account', ensureAuthenticated, index.account);
 
 app.get('/logout', index.logout);
-app.get("*", index.home);
+
+app.get("/", index.home);
 
 var PORT = process.env.PORT || 3000;
 

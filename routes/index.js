@@ -7,7 +7,7 @@ var Post = require(path.join(__dirname,'../models/postModel'));
 var routes = {};
 
 routes.home = function(req, res){
-	res.sendfile('./public/main.html')
+	res.sendfile('./public/main.html');
 };
 
 routes.account = function(req, res){
@@ -34,12 +34,13 @@ routes.account = function(req, res){
 	 				// data that will render account.handlebars
 	 				var CompletePageData = {
 	 					people : peopleNew,
-	 					twottes : giphPostsNew,
+	 					posts : giphPostsNew,
 	 					name:user.name,
 	 					displayName:displayName
 	 				}
 
-	 				res.json(CompletePageData);
+	 				res.status(200).json(CompletePageData);
+
    				})
    			})
  		}
