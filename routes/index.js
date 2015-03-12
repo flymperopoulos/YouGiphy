@@ -31,4 +31,14 @@ routes.parseForHash = function(req, res){
 	};
 };
 
+// for the moment, this does absolutely nothing
+// just a skeleton for later dev in a separate branch
+routes.searchGiphy = function(req, res){
+	// pulled directly from Giphy APi
+	// modified to use passed-in search term
+	// should theoreticaally work, untested
+	var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ req.data +"&api_key=dc6zaTOxFJmzC&limit=5");
+	xhr.done(function(data) { console.log("success got data", data); });
+};
+
 module.exports = routes;
