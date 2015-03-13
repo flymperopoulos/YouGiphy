@@ -40,29 +40,23 @@
               <a class="button" target="_self">Welcome, {{userName}}!</a>
             </li>
             <li ng-show="logStatus">
-              <a class="button" href="/posts">Posts</a>
+              <a class="button" id="posts_button" href="/posts">Posts</a>
             </li>
             <li ng-show="logStatus">
-              <a class="button" href="/logout" target="_self">Logout</a>
+              <a class="button" id="logout_button" href="/logout" target="_self">Logout</a>
             </li>
           </ul>
         </div>
       </nav>
 
-      <br><br><br><br>
-
+      <br>
       <center>
         <div class="greetingHeading" ng-hide="greetingHeading">
           <img src="./images/introGif.gif" width="150" height="90">
+          <br><br>
           <div class="heading-title">YouGiphy</div>
           <div class="heading-title-description">Enjoy your favorite gifs, one hashtag at a time.</div>
         </div>
-
-       <div class="postDetail" ng-show="resultingPost">
-        {{userName}} - {{nameInForm}} 
-        <br>
-         <a href="{{giphURL}}" target='_blank'>{{giphURL}}</a>
-       </div>
 
       </center>
 

@@ -26,7 +26,8 @@ app.controller('mainController', function($scope, $http, $location){
 	    var postX = {
 	        author : $scope.userName,
 	        content: $scope.tweetField,
-	        giphURL : $scope.giphURL
+	        giphURL : $scope.giphURL,
+	        date : Date.now()
 	    };
 
 	    // posts new wiki
@@ -100,7 +101,8 @@ app.controller('postsController', function($scope, $http, $location){
 	        .success(function(data, status, headers, config) {
 	            console.log("data", data);
 	            console.log("status", status);
-	            $scope.posts=data;	          
+	            $scope.posts=data;	 
+	            $scope.headingList = true;         
 	          })
 
 	        .error(function(data, status, headers, config) {

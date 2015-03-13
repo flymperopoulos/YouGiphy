@@ -21,10 +21,9 @@ routes.createPost = function (req, res){
 		authorName : req.body.author,
 		authorId : req.session.passport.user,
 		content : postContent,
-		giphURL : giphContent
+		giphURL : giphContent,
+		date : Date.now() 
 	});
-
-	console.log('GIVE ME A POST ', newPost);
 
 	// saves wikiArticle and sends responce json
 	newPost.save(function (err, post){
@@ -66,7 +65,6 @@ routes.account = function(req, res){
 	 				}
 
 	 				res.status(200).json(CompletePageData);
-
    				})
    			})
  		}

@@ -1,8 +1,15 @@
 <center>
+	<div class="heading-title-description" ng-show="headingList"> List of all GiphyTweets!</div>
+	<br>
 	<div class="postList">
 	  <div ng-repeat="post in posts">
-	    <p>{{post.authorName}} - {{post.content}}</p><br>
-	    <a href="{{post.giphURL}}" target='_blank'>{{post.giphURL}}</a><br>
+	    <p class="bg-info"><b>{{post.authorName}}</b></p>
+	    <p class="bg-success">Message: {{post.content}}</p>
+	    <p class="bg-warning"><a href="{{post.giphURL}}" target='_blank'>{{post.giphURL}}</a></p><br>
 	  </div>
 	</div>
 </center>
+
+<!-- Trying to implement gif to show up on screen in iframe, however getting interpolation error with angular. -->
+
+<!-- <iframe src="{{post.giphURL}}" width="480" height="284" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> -->
