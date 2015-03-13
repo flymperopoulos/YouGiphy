@@ -90,6 +90,25 @@ app.controller('mainController', function($scope, $http, $location){
 	        console.log("data", data);
 	        console.log("status", status);
 	      });
+
+    $scope.posts = function (){
+
+        $http.get('/posts')
+            .success(function(data, status, headers, config) {
+                console.log("data", data);
+                console.log("status", status);
+                $scope.posts=data;	 
+                $scope.headingList = true;         
+              })
+
+            .error(function(data, status, headers, config) {
+                console.log("data", data);
+                console.log("status", status);
+              });
+        }
+
+    // method with all our stuff from get request
+    $scope.posts();
 });
 
 // gives posts to the respective html document
