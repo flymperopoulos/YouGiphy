@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 
 var postSchema = mongoose.Schema({
-	author: String,
+	authorId: String,
+	authorName : String,
 	content: String,
 	giphURL: String
 });

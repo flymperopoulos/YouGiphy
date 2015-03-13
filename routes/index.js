@@ -14,12 +14,12 @@ routes.createPost = function (req, res){
 
 	// grabs data from request json body
 	var postContent = req.body.content;
-	var nameDisplay = req.body.name;
 	var giphContent = req.body.giphURL;
 
 	// creates new wikiArticle
 	var newPost = new Post({
-		author : req.session.passport.user,
+		authorName : req.body.author,
+		authorId : req.session.passport.user,
 		content : postContent,
 		giphURL : giphContent
 	});
