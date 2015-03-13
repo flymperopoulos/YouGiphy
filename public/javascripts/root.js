@@ -9,23 +9,45 @@ app.config(function($routeProvider, $locationProvider){
 	{
     	controller: "mainController"
     })
+	
+	// route to creation of new post
+	.when('/newpost', {
+	  templateUrl : '../htmlLayouts/newpost.html',
+	  controller  : 'newPostController'
+	})
 
     $locationProvider.html5Mode(true);
 });
 
 app.controller('mainController', function($scope, $http, $location){
 
+	// when button clicked parses for hash
 	$scope.submitTweet = function (){
 		var splitSpaces = String($scope.tweetField).split(' ');
 		for (i in splitSpaces){
 			var elt = splitSpaces[i];
 			if (elt.indexOf('#') == 0){
-				$scope.hashtag = elt;
+				$scope.hashtag = elt.replace('#','');
 			}
 			else {
 				console.log("didn't find hashtag");
 			};
 		};
+
+		// makes get request to giphy for that hash
+		$http.get("http://api.giphy.com/v1/gifs/search?q="+ $scope.hashtag + "&api_key=dc6zaTOxFJmzC&limit=5")
+		    .success(function(data, status, headers, config) {
+		        console.log("data from Giph ", data);
+		        console.log("status", status);
+		        $scope.randomNumber = Math.floor(Math.random()*data.data.length)
+		        $scope.giphURL = data.data[$scope.randomNumber].embed_url;
+		        $location.path('/newpost');
+		      })
+
+		    .error(function(data, status, headers, config) {
+		        console.log("data", data);
+		        console.log("status", status);
+		      });
 	}
 
 	$http.get('/account')
@@ -43,6 +65,32 @@ app.controller('mainController', function($scope, $http, $location){
 	        console.log("data", data);
 	        console.log("status", status);
 	      });
+});
 
-	$scope.submitTweet();
+app.controller('newPostController', function($scope, $http, $location){
+	
+	$scope.submitNewPost = function($files){ 
+	    var postX = {
+	        author : $scope.userName,
+	        content: $scope.tweetField,
+	        giphURL : $scope.giphURL
+	    };
+
+	    console.log('PostInfo: ', postX);
+
+	    // posts new wiki
+	    $http.post("/createPost", postX)
+	        .success(function(data, status, headers, config) {
+	        	console.log('JAHAHAHAH');
+	            console.log("data", data);
+	            console.log("status", status);
+	            // $scope.posts.push(data);        
+	    })
+		    .error(function(data, status, headers, config) {
+		        console.log("data", data);
+		        console.log("status", status);
+		      });
+	}
+
+	$scope.submitNewPost();
 });

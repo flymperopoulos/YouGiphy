@@ -62,6 +62,8 @@ app.get('/account', ensureAuthenticated, index.account);
 
 app.get('/logout', index.logout);
 
+app.post('/createPost', index.createPost);
+
 app.get("/", index.home);
 
 var PORT = process.env.PORT || 3000;

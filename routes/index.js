@@ -10,8 +10,35 @@ routes.home = function(req, res){
 	res.sendfile('./public/main.html');
 };
 
-routes.account = function(req, res){
+routes.createPost = function (req, res){
 
+	// grabs data from request json body
+	var postContent = req.body.content;
+	var nameDisplay = req.body.name;
+	var giphContent = req.body.giphURL;
+
+	// creates new wikiArticle
+	var newPost = new Post({
+		author : req.session.passport.user,
+		content : postContent,
+		giphURL : giphContent
+	});
+
+	console.log('GIVE ME A POST ', newPost);
+
+	// saves wikiArticle and sends responce json
+	newPost.save(function (err, post){
+		if (err) {
+			errorHandler(err, req, res);
+		} else {
+			// sends article as json
+			res.json(post);
+		}
+	})
+}
+
+routes.account = function(req, res){
+	console.log('GIVE ME SESSION ', req.session);
 	// looks by id in the passport session for the user that got authenticated 
 	Human.findById(req.session.passport.user, function(err, user) {
  		if(err) {

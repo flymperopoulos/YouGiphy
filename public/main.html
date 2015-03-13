@@ -51,18 +51,17 @@
 
       <center>
         <div class="greetingHeading" ng-hide="greetingHeading">
+          <img src="./images/introGif.gif" width="150" height="90">
           <div class="heading-title">YouGiphy</div>
           <div class="heading-title-description">Enjoy your favorite gifs, one hashtag at a time.</div>
         </div>
 
        <form ng-show="formForTweets">
-       Type your giphyTweet:<br>
-       <input ng-model="tweetField" type="text" name="firstname">
-       <input id="search_submit" ng-click="submitTweet()" type="submit" value="Submit">
-       <br>
+         Type your giphyTweet:<br>
+         <input ng-model="tweetField" type="text" name="firstname">
+         <input id="search_submit" ng-click="submitTweet()" type="submit" value="Submit">
+         <br>
        </form>
-
-       {{hashtag}}
 
       </center>
 
