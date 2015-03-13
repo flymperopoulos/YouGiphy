@@ -1,8 +1,11 @@
 var mongoose = require("mongoose");
 
 var postSchema = mongoose.Schema({
-  title: String,
-  content: String
+	authorId: String,
+	authorName : String,
+	content: String,
+	giphURL: String, 
+	date : Date
 });
 
 module.exports = mongoose.model("Post", postSchema);
