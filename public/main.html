@@ -63,6 +63,12 @@
          <br>
        </form>
 
+       <div class="postDetail" ng-show="resultingPost">
+        {{userName}} - {{tweetField}} 
+        <br>
+         <a href="{{giphURL}}" target='_blank'>{{giphURL}}</a>
+       </div>
+
       </center>
 
       <div ng-view></div>
