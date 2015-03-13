@@ -7,8 +7,15 @@ app.config(function($routeProvider, $locationProvider){
     // route to home page
 	.when("/",
 	{
+		templateUrl : '../htmlLayouts/formForNew.html',
     	controller: "mainController"
     })
+
+	.when('/posts',
+	{
+		templateUrl : '../htmlLayouts/posts.html',
+		controller : 'postsController'
+	})
 
     $locationProvider.html5Mode(true);
 });
@@ -25,9 +32,11 @@ app.controller('mainController', function($scope, $http, $location){
 	    // posts new wiki
 	    $http.post("/createPost", postX)
 	        .success(function(data, status, headers, config) {
-	        	console.log('JAHAHAHAH');
 	            console.log("data", data);
 	            console.log("status", status);
+	            $scope.nameInForm = $scope.tweetField;
+	            $scope.tweetField = null;
+	            $scope.showDirection = true;
 	    })
 		    .error(function(data, status, headers, config) {
 		        console.log("data", data);
@@ -82,29 +91,26 @@ app.controller('mainController', function($scope, $http, $location){
 	      });
 });
 
-app.controller('newPostController', function($scope, $http, $location){
-	
-	$scope.submitNewPost = function($files){ 
-	    var postX = {
-	        author : $scope.userName,
-	        content: $scope.tweetField,
-	        giphURL : $scope.giphURL
-	    };
+// gives posts to the respective html document
+app.controller('postsController', function($scope, $http, $location){
 
-	    console.log('PostInfo: ', postX);
+	$scope.posts = function (){
 
-	    // posts new wiki
-	    $http.post("/createPost", postX)
+	    $http.get('/posts')
 	        .success(function(data, status, headers, config) {
-	        	console.log('JAHAHAHAH');
 	            console.log("data", data);
 	            console.log("status", status);
-	    })
-		    .error(function(data, status, headers, config) {
-		        console.log("data", data);
-		        console.log("status", status);
-		      });
-	}
+	            $scope.posts=data;	          
+	          })
 
-	$scope.submitNewPost();
+	        .error(function(data, status, headers, config) {
+	            console.log("data", data);
+	            console.log("status", status);
+	          });
+	    }
+
+	// method with all our stuff from get request
+	$scope.posts();
 });
+
+

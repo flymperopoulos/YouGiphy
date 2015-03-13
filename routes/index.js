@@ -38,7 +38,6 @@ routes.createPost = function (req, res){
 }
 
 routes.account = function(req, res){
-	console.log('GIVE ME SESSION ', req.session);
 	// looks by id in the passport session for the user that got authenticated 
 	Human.findById(req.session.passport.user, function(err, user) {
  		if(err) {
@@ -71,6 +70,17 @@ routes.account = function(req, res){
    				})
    			})
  		}
+	});
+}
+
+// gets posts
+routes.posts = function (req, res){
+	Post.find(function (err, posts){
+		if (err) {
+			errorHandler(err, req, res);
+		} else {
+			res.status(200).json(posts);
+		}
 	});
 }
 

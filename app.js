@@ -60,10 +60,9 @@ app.get('/auth/twitter/callback',
 	passport.authenticate('twitter', { failureRedirect: '/', successRedirect:'/' }));
 app.get('/account', ensureAuthenticated, index.account);
 
-app.get('/logout', index.logout);
-
+app.get('/posts', index.posts);
 app.post('/createPost', index.createPost);
-
+app.get('/logout', index.logout);
 app.get("/", index.home);
 
 var PORT = process.env.PORT || 3000;

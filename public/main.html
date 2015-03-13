@@ -29,8 +29,7 @@
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-              <a href="/#/"><img class="navbar-brand" alt="Brand" src="images/giphyLogoTab.png">
-              </a>
+              <a href="/"><img class="navbar-brand" alt="Brand" src="images/giphyLogoTab.png"></a>
           </div>
 
           <ul class="nav navbar-nav navbar-right">
@@ -41,13 +40,16 @@
               <a class="button" target="_self">Welcome, {{userName}}!</a>
             </li>
             <li ng-show="logStatus">
+              <a class="button" href="/posts">Posts</a>
+            </li>
+            <li ng-show="logStatus">
               <a class="button" href="/logout" target="_self">Logout</a>
             </li>
           </ul>
         </div>
       </nav>
 
-      <br><br><br>
+      <br><br><br><br>
 
       <center>
         <div class="greetingHeading" ng-hide="greetingHeading">
@@ -56,15 +58,8 @@
           <div class="heading-title-description">Enjoy your favorite gifs, one hashtag at a time.</div>
         </div>
 
-       <form ng-show="formForTweets">
-         Type your giphyTweet:<br>
-         <input ng-model="tweetField" type="text" name="firstname">
-         <input id="search_submit" ng-click="submitTweet()" type="submit" value="Submit">
-         <br>
-       </form>
-
        <div class="postDetail" ng-show="resultingPost">
-        {{userName}} - {{tweetField}} 
+        {{userName}} - {{nameInForm}} 
         <br>
          <a href="{{giphURL}}" target='_blank'>{{giphURL}}</a>
        </div>

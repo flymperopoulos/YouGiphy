@@ -1,0 +1,11 @@
+<center>
+	<form ng-show="formForTweets">
+	 <div class="heading-title">Type your giphyTweet</div>
+	 <div class="heading-title-description"> Compose a tweet and we will generate a random gif with the word in your hashtag for you!</div><br>
+	  <input ng-model="tweetField" type="text" name="firstname">
+	  <button id="search_submit" type="submit" ng-click="submitTweet()" class="btn btn-info">Submit</button>
+	  <br>
+	</form>
+	<br>
+	<p ng-show="showDirection" style="color:#00b200">Visit the <a href="/posts">Posts</a> Tab to view the complete list of giphs!</p>
+</center>
