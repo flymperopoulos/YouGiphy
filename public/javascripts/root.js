@@ -54,7 +54,7 @@ app.controller('mainController', function($scope, $http, $location){
 			if (element.indexOf('#') === 0){
 				$scope.hashtag = element.replace('#','');
 
-				$http.get("http://api.giphy.com/v1/gifs/search?q="+ $scope.hashtag + "&api_key=dc6zaTOxFJmzC&limit=5")
+				$http.get("http://api.giphy.com/v1/gifs/search?q="+ $scope.hashtag + "&api_key=dc6zaTOxFJmzC&limit=10")
 				    .success(function(data, status, headers, config) {
 				        console.log("data from Giph ", data);
 				        console.log("status", status);
